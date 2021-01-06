@@ -24,14 +24,10 @@
 - has_one :tag_day
 
 
-# テーブル設計
 
- 
-  This README would normally document whatever steps are necessary to get the		 ## users テーブル
- application up and running.		
+## items テーブル
 
- 
-  Things you may want to cover:		 | Column      | Type       | Options                        |
+ | Column      | Type       | Options                        |
  | ----------- | ---------- | ------------------------------ |
  | nickname    | string     | null: false                    |
  | email       | string     | null: false                    |
