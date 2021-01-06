@@ -1,24 +1,133 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
 
-* Ruby version
+- belongs_to :user
+- has_one :consumer
+- has_one :tag_category
+- has_one :tag_state
+- has_one :tag_delivery_day
+- has_one :tag_address
+- has_one :tag_delivery_charge
 
-* System dependencies
+## consumers テーブル
 
-* Configuration
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| postal_code   | references | null: false                    |
+| tag_address   | references | null: false, foreign_key: true |
+| city          | string     | null: false                    |
+| address       | string     | null: false                    |
+| building_name | string     | null: false                    |
+| tel_number    | string     | null: false                    |
 
-* Database creation
+### Association
 
-* Database initialization
+- has_one :order
+- belongs_to :item
+- has_one :tag_address
 
-* How to run the test suite
+## orders テーブル
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| consumer      | references | null: false, foreign_key: true |
+| item          | references | null: false, foreign_key: true |
 
-* Services (job queues, cache servers, search engines, etc.)
+### Association
 
-* Deployment instructions
+- belongs_to :consumer
+- belongs_to :user
+
+
+
+
+#プルダウン
+
+## tag_years テーブル
+
+| Column   | Type       | Options                        |
+| -------- | ---------- | ------------------------------ |
+| tag_year | string     | null: false                    |
+
+### Association
+- belongs_to :user
+
+
+
+## tag_months テーブル
+
+| Column     | Type       | Options                        |
+| ---------- | ---------- | ------------------------------ |
+| tag_month  | string     | null: false                    |
+
+### Association
+- belongs_to :user
+
+
+
+## tag_days テーブル
+
+| Column      | Type       | Options                        |
+| ----------- | ---------- | ------------------------------ |
+| tag_day     | string     | null: false                    |
+
+### Association
+- belongs_to :user
+
+
+
+## tag_categories テーブル
+
+| Column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| tag_category | string     | null: false                    |
+
+### Association
+
+- belongs_to :item
+
+
+## tag_states テーブル
+
+| Column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| tag_state    | string     | null: false                    |
+
+### Association
+
+- belongs_to :item
+
+
+## tag_delivery_charges テーブル
+
+| Column                | Type       | Options                        |
+| --------------------- | ---------- | ------------------------------ |
+| tag_delivery_charge   | string     | null: false                    |
+
+### Association
+
+- belongs_to :item
+
+
+## tag_delivery_days テーブル
+
+| Column                | Type       | Options                        |
+| --------------------- | ---------- | ------------------------------ |
+| tag_delivery_day      | string     | null: false                    |
+
+### Association
+
+- belongs_to :item
+
+## tag_addresses テーブル
+
+| Column                | Type       | Options                        |
+| --------------------- | ---------- | ------------------------------ |
+| tag_address           | string     | null: false                    |
+
+### Association
+
+- belongs_to :item
+- belongs_to :consumer
+>>>>>>> Stashed changes
 
 * ...
