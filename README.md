@@ -1,5 +1,6 @@
 # テーブル設計
 
+<<<<<<< Updated upstream
 ## users テーブル
 
 | Column      | Type       | Options                        |
@@ -48,6 +49,33 @@
 - has_one :tag_delivery_day
 - has_one :tag_address
 - has_one :tag_delivery_charge
+=======
+ 
+  This README would normally document whatever steps are necessary to get the		 ## users テーブル
+ application up and running.		
+
+ 
+  Things you may want to cover:		 | Column      | Type       | Options                        |
+ | ----------- | ---------- | ------------------------------ |
+ | nickname    | string     | null: false                    |
+ | email       | string     | null: false                    |
+ | password    | string     | null: false                    |
+ | first_name1 | string     | null: false                    |
+ | last_name1  | string     | null: false                    |
+ | first_name2 | string     | null: false                    |
+ | last_name2  | string     | null: false                    |
+ | tag_day     | references | null: false, foreign_key: true |
+ | tag_month   | references | null: false, foreign_key: true |
+ | tag_year    | references | null: false, foreign_key: true |
+
+ 
+  * Ruby version		 ### Association
+ - has_many :items
+ - has_many :orders
+ - has_one :tag_year
+ - has_one :tag_month
+ - has_one :tag_day
+>>>>>>> Stashed changes
 
 ## consumers テーブル
 
