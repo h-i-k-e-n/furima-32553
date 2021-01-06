@@ -24,32 +24,8 @@
 - has_one :tag_day
 
 
+# テーブル設計
 
-
-## items テーブル
-
-| Column              | Type       | Options                        |
-| ------------------- | ---------- | ------------------------------ |
-| title               | string     | null: false                    |
-| price               | string     | null: false                    |
-| text                | text       | null: false                    |
-| tag_category        | references | null: false, foreign_key: true |
-| tag_state           | references | null: false, foreign_key: true |
-| tag_address         | references | null: false, foreign_key: true |
-| tag_delivery_charge | references | null: false, foreign_key: true |
-| tag_delivery_day    | references | null: false, foreign_key: true |
-| user                | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :user
-- has_one :consumer
-- has_one :tag_category
-- has_one :tag_state
-- has_one :tag_delivery_day
-- has_one :tag_address
-- has_one :tag_delivery_charge
-=======
  
   This README would normally document whatever steps are necessary to get the		 ## users テーブル
  application up and running.		
@@ -75,7 +51,30 @@
  - has_one :tag_year
  - has_one :tag_month
  - has_one :tag_day
->>>>>>> Stashed changes
+
+## items テーブル
+
+| Column              | Type       | Options                        |
+| ------------------- | ---------- | ------------------------------ |
+| title               | string     | null: false                    |
+| price               | string     | null: false                    |
+| text                | text       | null: false                    |
+| tag_category        | references | null: false, foreign_key: true |
+| tag_state           | references | null: false, foreign_key: true |
+| tag_address         | references | null: false, foreign_key: true |
+| tag_delivery_charge | references | null: false, foreign_key: true |
+| tag_delivery_day    | references | null: false, foreign_key: true |
+| user                | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :user
+- has_one :consumer
+- has_one :tag_category
+- has_one :tag_state
+- has_one :tag_delivery_day
+- has_one :tag_address
+- has_one :tag_delivery_charge
 
 ## consumers テーブル
 
@@ -108,7 +107,7 @@
 
 
 
-#プルダウン
+# プルダウン
 
 ## tag_years テーブル
 
