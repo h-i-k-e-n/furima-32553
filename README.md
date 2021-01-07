@@ -6,7 +6,7 @@
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
 | nickname           | string     | null: false                    |
-| email              | string     | null: false                    |
+| email              | string     | unique: true                   |
 | encrypted_password | string     | null: false                    |
 | first_name         | string     | null: false                    |
 | last_name          | string     | null: false                    |
@@ -17,7 +17,7 @@
 ### Association
 - has_many :items
 - has_many :orders
-- has_one :consumers
+
 
 ## items テーブル
 
@@ -36,7 +36,7 @@
 ### Association
 
 - belongs_to :user
-- has_one :consumer
+- has_one :order
 
 
 ## consumers テーブル
@@ -49,11 +49,12 @@
 | address        | string     | null: false                    |
 | building_name  | string     |                                |
 | tel_number     | string     | null: false                    |
+| order_id       | integer    | null: false                    |
 
 ### Association
-- belongs_to :user
-- has_one :order
-- belongs_to :item
+
+- belongs_to :order
+
 
 
 
@@ -62,12 +63,12 @@
 | ------------- | ---------- | ------------------------------ |
 | user_id       | integer    | null: false, foreign_key: true |
 | item_id       | integer    | null: false, foreign_key: true |
-| consumer_id   | integer    | null: false, foreign_key: true |
+
 ### Association
 
 - belongs_to :item
 - belongs_to :user
-- belongs_to :consumer
+- has_one :consumer
 
 
 
