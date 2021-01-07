@@ -1,67 +1,39 @@
 # テーブル設計
 
 
-
 ## users テーブル
 
-| Column      | Type       | Options                        |
-| ----------- | ---------- | ------------------------------ |
-| nickname    | string     | null: false                    |
-| email       | string     | null: false                    |
-| password    | string     | null: false                    |
-| first_name1 | string     | null: false                    |
-| last_name1  | string     | null: false                    |
-| first_name2 | string     | null: false                    |
-| last_name2  | string     | null: false                    |
-| tag_day     | references | null: false, foreign_key: true |
-| tag_month   | references | null: false, foreign_key: true |
-| tag_year    | references | null: false, foreign_key: true |
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| nickname           | string     | null: false                    |
+| email              | string     | null: false                    |
+| password           | string     | null: false                    |
+| encrypted_password | string     | null: false                    |
+| first_name1        | string     | null: false                    |
+| last_name1         | string     | null: false                    |
+| first_name2        | string     | null: false                    |
+| last_name2         | string     | null: false                    |
+| birth_date         | date       | null: false,                   |
 
 ### Association
 - has_many :items
 - has_many :orders
-- has_one :tag_year
-- has_one :tag_month
-- has_one :tag_day
-
+- has_one :birth_date
 
 
 ## items テーブル
 
- | Column      | Type       | Options                        |
- | ----------- | ---------- | ------------------------------ |
- | nickname    | string     | null: false                    |
- | email       | string     | null: false                    |
- | password    | string     | null: false                    |
- | first_name1 | string     | null: false                    |
- | last_name1  | string     | null: false                    |
- | first_name2 | string     | null: false                    |
- | last_name2  | string     | null: false                    |
- | tag_day     | references | null: false, foreign_key: true |
- | tag_month   | references | null: false, foreign_key: true |
- | tag_year    | references | null: false, foreign_key: true |
-
- 
-  * Ruby version		 ### Association
- - has_many :items
- - has_many :orders
- - has_one :tag_year
- - has_one :tag_month
- - has_one :tag_day
-
-## items テーブル
-
-| Column              | Type       | Options                        |
-| ------------------- | ---------- | ------------------------------ |
-| title               | string     | null: false                    |
-| price               | string     | null: false                    |
-| text                | text       | null: false                    |
-| tag_category        | references | null: false, foreign_key: true |
-| tag_state           | references | null: false, foreign_key: true |
-| tag_address         | references | null: false, foreign_key: true |
-| tag_delivery_charge | references | null: false, foreign_key: true |
-| tag_delivery_day    | references | null: false, foreign_key: true |
-| user                | references | null: false, foreign_key: true |
+| Column                 | Type       | Options                        |
+| ---------------------- | ---------- | ------------------------------ |
+| title                  | string     | null: false                    |
+| price                  | integer    | null: false                    |
+| text                   | text       | null: false                    |
+| tag_category_id        | integer    | null: false, foreign_key: true |
+| tag_state_id           | integer    | null: false, foreign_key: true |
+| tag_address_id         | integer    | null: false, foreign_key: true |
+| tag_delivery_charge_id | integer    | null: false, foreign_key: true |
+| tag_delivery_day_id    | integer    | null: false, foreign_key: true |
+| user                   | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -75,14 +47,14 @@
 
 ## consumers テーブル
 
-| Column        | Type       | Options                        |
-| ------------- | ---------- | ------------------------------ |
-| postal_code   | references | null: false                    |
-| tag_address   | references | null: false, foreign_key: true |
-| city          | string     | null: false                    |
-| address       | string     | null: false                    |
-| building_name | string     | null: false                    |
-| tel_number    | string     | null: false                    |
+| Column         | Type       | Options                        |
+| -------------- | ---------- | ------------------------------ |
+| postal_code    | string     | null: false                    |
+| tag_address_id | integer    | null: false, foreign_key: true |
+| city           | string     | null: false                    |
+| address        | string     | null: false                    |
+| building_name  | string     |                                |
+| tel_number     | string     | null: false                    |
 
 ### Association
 
@@ -93,48 +65,28 @@
 ## ordersテーブル
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
-| consumer      | references | null: false, foreign_key: true |
-| item          | references | null: false, foreign_key: true |
+| user_id       | integer    | null: false, foreign_key: true |
+| item_id       | integer    | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :consumer
+- belongs_to :item
 - belongs_to :user
+
 
 
 
 # プルダウン
 
-## tag_years テーブル
+## birth_dates テーブル
 
 | Column   | Type       | Options                        |
 | -------- | ---------- | ------------------------------ |
-| tag_year | string     | null: false                    |
+| birth_date | string     | null: false                    |
 
 ### Association
 - belongs_to :user
 
-
-
-## tag_months テーブル
-
-| Column     | Type       | Options                        |
-| ---------- | ---------- | ------------------------------ |
-| tag_month  | string     | null: false                    |
-
-### Association
-- belongs_to :user
-
-
-
-## tag_days テーブル
-
-| Column      | Type       | Options                        |
-| ----------- | ---------- | ------------------------------ |
-| tag_day     | string     | null: false                    |
-
-### Association
-- belongs_to :user
 
 
 
@@ -191,3 +143,4 @@
 
 - belongs_to :item
 - belongs_to :consumer
+
