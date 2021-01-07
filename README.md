@@ -17,7 +17,7 @@
 ### Association
 - has_many :items
 - has_many :orders
-- has_many :consumers
+- has_one :consumers
 
 ## items テーブル
 
@@ -37,8 +37,7 @@
 
 - belongs_to :user
 - has_one :consumer
-- has_one :tag_category
-- has_one :tag_state
+
 
 ## consumers テーブル
 
@@ -55,7 +54,7 @@
 - belongs_to :user
 - has_one :order
 - belongs_to :item
-- has_one :tag_address
+
 
 
 ## ordersテーブル
@@ -116,14 +115,7 @@
 
 
 
-## tag_addresses テーブル
-
-| Column                | Type       | Options                        |
-| --------------------- | ---------- | ------------------------------ |
-| tag_address           | string     | null: false                    |
-
-### Association
 
 
-- belongs_to :consumer
+
 
